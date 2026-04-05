@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecureRepo | Secure Setup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="card p-4 shadow-lg text-center" style="width: 100%; max-width: 450px;">
+            <h4 class="fw-bold text-info"><i class="fas fa-key me-2"></i>MFA Initialization</h4>
+            <p class="text-secondary small mb-4">Scan the barcode below to secure your account.</p>
+
+            <div class="bg-white p-3 rounded mb-4 mx-auto" style="width: fit-content;">
+                {% if qr_code %}
+                    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" class="img-fluid" style="max-width: 200px;">
+                {% else %}
+                    <p class="text-danger">Failed to generate barcode.</p>
+                {% endif %}
+            </div>
+
+            <div class="p-3 bg-dark rounded border border-secondary mb-4">
+                <p class="small text-secondary mb-1 text-uppercase">Manual Entry Key</p>
+                <code class="text-info fw-bold" style="font-size: 1.2rem;">{{ secret }}</code>
+            </div>
+
+            <form action="{{ url_for('mfa_setup_complete') }}" method="POST">
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                     I'VE SCANNED IT <i class="fas fa-chevron-right ms-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

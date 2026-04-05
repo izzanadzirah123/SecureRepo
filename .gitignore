@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+venv/
+env/
+
+# Sensitive
+config.py
+*.env
+.env
+
+# Uploads
+uploads/
+data/uploads/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+
+# Temporary
+*.tmp
+*.bak
+
+# Test files
+test_*.py
+*_test.py
+
+# Old/backup files
+*_old.py
+*_backup.py
+*_fixed.py
+app_final_fixed.py
+
+# Training data (if large)
+*.csv
+invoice_training_data.csv
+
+# Jupyter notebooks (if they contain sensitive data)
+*.ipynb
+
+# Duplicate gitignore
+gitignore

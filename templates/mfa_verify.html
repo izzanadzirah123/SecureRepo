@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecureRepo | Verify Identity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-dark text-white">
+    <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="card p-4 shadow-lg text-center bg-secondary text-white" style="width: 100%; max-width: 400px;">
+            <h4 class="fw-bold text-info"><i class="fas fa-shield-alt me-2"></i>Security Check</h4>
+            
+            <div class="alert alert-info mt-3 py-2">
+                <small class="text-uppercase d-block">Your Personal Keyword:</small>
+                <strong style="font-size: 1.2rem;">{{ keyword }}</strong>
+            </div>
+            
+            <p class="small mb-4">If the keyword above is correct, enter your 6-digit MFA code.</p>
+
+            <form method="POST">
+                <div class="mb-3">
+                    <input type="text" name="otp" class="form-control form-control-lg text-center fw-bold" 
+                           placeholder="000000" maxlength="6" autofocus required>
+                </div>
+                <button type="submit" class="btn btn-info w-100 py-2 fw-bold shadow-sm">VERIFY & LOGIN</button>
+            </form>
+            
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="text-danger mt-3 small">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            
+            </div>
+    </div>
+</body>
+</html>
